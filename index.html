@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakshyam Dhital | Portfolio</title>
+
+  <!-- Google Fonts: Orbitron (display headings) + Syne (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 — icons used throughout the page -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Our vibrant stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       PARTICLE CANVAS
+       A full-screen canvas sits behind everything and draws
+       the animated floating dots + connecting lines effect.
+       The JS in script.js powers this.
+  ====================================================== -->
+  <canvas id="particleCanvas"></canvas>
+
+
+  <!-- =====================================================
+       NAVIGATION BAR
+       Sticky at top. Becomes glass-dark on scroll.
+       Hamburger icon appears on mobile screens.
+  ====================================================== -->
+  <nav class="navbar" id="navbar">
+
+    <!-- Logo: Sakshyam's initials -->
+    <div class="nav-logo">
+      <span class="logo-text">SD<span class="logo-dot">.</span></span>
+    </div>
+
+    <!-- Mobile hamburger (3 lines → X when open) -->
+    <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation links — smooth scroll to each section -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero"     class="nav-link">Home</a></li>
+      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#skills"   class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+    </ul>
+
+  </nav>
+
+
+  <!-- =====================================================
+       HERO SECTION
+       Full-screen intro with profile photo placeholder,
+       name, animated typing subtitle, and CTA buttons.
+       Background has 3 blurred floating colour blobs.
+  ====================================================== -->
+  <section class="hero" id="hero">
+
+    <div class="hero-content">
+
+      <!-- Profile image area — replace the icon with your real photo:
+           <img src="your-photo.jpg" alt="Sakshyam Dhital"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+      -->
+      <div class="profile-ring">
+        <div class="profile-img">
+          <i class="fa-solid fa-user profile-icon"></i>
+        </div>
+        <!-- Two spinning rings around the photo -->
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="hero-heading">
+        Hi, I'm <span class="gradient-text">Sakshyam Dhital</span>
+      </h1>
+
+      <!-- Subtitle with typing animation -->
+      <!-- The JS cycles through different phrases automatically -->
+      <p class="hero-subtitle">
+        <span class="static-text">Student | </span>
+        <span class="typing-text" id="typingText"></span>
+        <span class="cursor">|</span>
+      </p>
+
+      <!-- Call-to-action buttons -->
+      <div class="hero-buttons">
+        <a href="#about"   class="btn btn-primary">
+          <i class="fa-solid fa-user"></i> About Me
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fa-solid fa-envelope"></i> Contact
+        </a>
+      </div>
+
+    </div><!-- /hero-content -->
+
+    <!-- Decorative glowing blobs in the background -->
+    <div class="hero-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+  </section><!-- /hero -->
+
+
+  <!-- =====================================================
+       ABOUT SECTION
+       Left side: a decorative C++ code card showing info.
+       Right side: personal introduction paragraphs + stats.
+  ====================================================== -->
+  <section class="section about-section" id="about">
+    <div class="container reveal">
+
+      <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+
+      <div class="about-grid">
+
+        <!-- LEFT — Code-styled info card (looks like a C++ file) -->
+        <div class="about-code glass-card">
+
+          <!-- Fake macOS window buttons + filename -->
+          <div class="code-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="code-filename">about_me.cpp</span>
+          </div>
+
+          <!-- C++ styled personal info — purely decorative / visual -->
+          <pre class="code-body"><code><span class="c-keyword">class</span> <span class="c-class">Sakshyam</span> {
+  <span class="c-keyword">public:</span>
+    <span class="c-type">string</span> name     = <span class="c-string">"Sakshyam Dhital"</span>;
+    <span class="c-type">string</span> location = <span class="c-string">"Nepal 🇳🇵"</span>;
+    <span class="c-type">string</span> passion  = <span class="c-string">"Tech &amp; Code"</span>;
+    <span class="c-type">string</span> email    = <span class="c-string">"sakshyam@example.com"</span>;
+    <span class="c-type">bool</span>   learning = <span class="c-keyword">true</span>;
+    <span class="c-type">bool</span>   openToWork = <span class="c-keyword">true</span>;
+
+    <span class="c-type">void</span> <span class="c-func">dailyRoutine</span>() {
+      code();    <span class="c-comment">// write C++ / web code</span>
+      learn();   <span class="c-comment">// explore new tech</span>
+      repeat();  <span class="c-comment">// never stop growing</span>
+    }
+
+    <span class="c-type">string</span> <span class="c-func">getGoal</span>() {
+      <span class="c-keyword">return</span> <span class="c-string">"Become a great developer"</span>;
+    }
+};</code></pre>
+        </div><!-- /about-code -->
+
+        <!-- RIGHT — Text introduction -->
+        <div class="about-text">
+
+          <p>
+            Hey there! 👋 I'm <strong>Sakshyam Dhital</strong>, a passionate and
+            curious student from the beautiful country of <strong>Nepal 🇳🇵</strong>.
+            I love turning ideas into reality through the power of code.
+          </p>
+
+          <p>
+            I kicked off my programming journey with <strong>C++</strong>, diving deep
+            into logic, algorithms, object-oriented programming, and problem-solving.
+            It taught me how to think like a programmer — breaking big problems into
+            small, solvable pieces.
+          </p>
+
+          <p>
+            Now I'm levelling up and expanding into <strong>web development</strong>
+            — crafting beautiful, responsive websites with <strong>HTML</strong>,
+            <strong>CSS</strong>, and <strong>JavaScript</strong>. I enjoy the
+            creative challenge of making things look great and work perfectly.
+          </p>
+
+          <p>
+            I truly believe technology is a superpower, and I'm here to master it —
+            one commit at a time. When I'm not coding, you'll find me exploring new
+            tech, watching tutorials, or daydreaming about my next project idea!
+          </p>
+
+          <!-- Quick personal details row -->
+          <div class="about-details">
+            <div class="detail-item">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Student — currently studying</span>
+            </div>
+            <div class="detail-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Based in Nepal 🇳🇵</span>
+            </div>
+            <div class="detail-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>sakshyam@example.com</span>
+            </div>
+            <div class="detail-item">
+              <i class="fa-solid fa-language"></i>
+              <span>Nepali, English</span>
+            </div>
+          </div>
+
+          <!-- Fun stats cards -->
+          <div class="about-stats">
+            <div class="stat-card glass-card">
+              <span class="stat-num">1+</span>
+              <span class="stat-label">Year Coding</span>
+            </div>
+            <div class="stat-card glass-card">
+              <span class="stat-num">3+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-card glass-card">
+              <span class="stat-num">∞</span>
+              <span class="stat-label">Things to Learn</span>
+            </div>
+          </div>
+
+        </div><!-- /about-text -->
+
+      </div><!-- /about-grid -->
+    </div><!-- /container -->
+  </section><!-- /about -->
+
+
+  <!-- =====================================================
+       SKILLS SECTION
+       Six skill cards, each with a unique accent colour,
+       an icon, and an animated progress bar.
+  ====================================================== -->
+  <section class="section skills-section" id="skills">
+    <div class="container reveal">
+
+      <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+      <p class="section-sub">Technologies and tools I'm working with right now</p>
+
+      <div class="skills-grid">
+
+        <!-- ---- C++ ---- -->
+        <div class="skill-card glass-card">
+          <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+          <h3 class="skill-name">C++</h3>
+          <p class="skill-desc">My first language. Used for OOP, data structures, algorithms, and building console applications.</p>
+          <!-- data-width tells JS what % to animate the bar to -->
+          <div class="skill-bar-track">
+            <div class="skill-bar" data-width="70"></div>
+          </div>
+          <span class="skill-percent">70%</span>
+        </div>
+
+        <!-- ---- HTML ---- -->
+        <div class="skill-card glass-card">
+          <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+          <h3 class="skill-name">HTML5</h3>
+          <p class="skill-desc">Comfortable structuring semantic web pages, forms, tables, and multimedia elements.</p>
+          <div class="skill-bar-track">
+            <div class="skill-bar" data-width="85"></div>
+          </div>
+          <span class="skill-percent">85%</span>
+        </div>
+
+        <!-- ---- CSS ---- -->
+        <div class="skill-card glass-card">
+          <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+          <h3 class="skill-name">CSS3</h3>
+          <p class="skill-desc">Flexbox, Grid, animations, responsive design, and modern visual effects like glassmorphism.</p>
+          <div class="skill-bar-track">
+            <div class="skill-bar" data-width="75"></div>
+          </div>
+          <span class="skill-percent">75%</span>
+        </div>
+
+        <!-- ---- JavaScript ---- -->
+        <div class="skill-card glass-card">
+          <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
+          <h3 class="skill-name">JavaScript</h3>
+          <p class="skill-desc">DOM manipulation, event handling, animations, and making web pages interactive and dynamic.</p>
+          <div class="skill-bar-track">
+            <div class="skill-bar" data-width="60"></div>
+          </div>
+          <span class="skill-percent">60%</span>
+        </div>
+
+        <!-- ---- Problem Solving ---- -->
+        <div class="skill-card glass-card">
+          <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3 class="skill-name">Problem Solving</h3>
+          <p class="skill-desc">Breaking complex problems into logical steps. Practised through C++ exercises and mini-projects.</p>
+          <div class="skill-bar-track">
+            <div class="skill-bar" data-width="80"></div>
+          </div>
+          <span class="skill-percent">80%</span>
+        </div>
+
+        <!-- ---- Git ---- -->
+        <div class="skill-card glass-card">
+          <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
+          <h3 class="skill-name">Git &amp; GitHub</h3>
+          <p class="skill-desc">Version control basics: commits, branches, push/pull. Storing and sharing projects on GitHub.</p>
+          <div class="skill-bar-track">
+            <div class="skill-bar" data-width="55"></div>
+          </div>
+          <span class="skill-percent">55%</span>
+        </div>
+
+      </div><!-- /skills-grid -->
+    </div><!-- /container -->
+  </section><!-- /skills -->
+
+
+  <!-- =====================================================
+       PROJECTS SECTION
+       Three project cards — each with a unique colour theme,
+       description, tech tags, and GitHub / live-demo links.
+  ====================================================== -->
+  <section class="section projects-section" id="projects">
+    <div class="container reveal">
+
+      <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
+      <p class="section-sub">Things I've designed, built, and learned from</p>
+
+      <div class="projects-grid">
+
+        <!-- ======= PROJECT 1: Student Management System ======= -->
+        <div class="project-card glass-card">
+          <div class="project-top">
+            <div class="project-icon">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="project-links">
+              <!-- Replace # with your actual GitHub and live-demo URLs -->
+              <a href="#" class="proj-link" title="View Source Code on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#" class="proj-link" title="View Live Demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="project-title">Student Management System</h3>
+
+          <p class="project-desc">
+            A console-based <strong>C++ application</strong> that lets you add, view,
+            update, search, and delete student records. Uses <strong>file handling</strong>
+            so data persists between sessions. Applies OOP concepts like classes,
+            objects, and encapsulation.
+          </p>
+
+          <!-- What I learned / key features -->
+          <ul class="project-features">
+            <li><i class="fa-solid fa-check"></i> CRUD operations on student records</li>
+            <li><i class="fa-solid fa-check"></i> File I/O for persistent storage</li>
+            <li><i class="fa-solid fa-check"></i> OOP with classes &amp; methods</li>
+          </ul>
+
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">OOP</span>
+            <span class="tag">File I/O</span>
+            <span class="tag">Console App</span>
+          </div>
+        </div><!-- /project 1 -->
+
+
+        <!-- ======= PROJECT 2: Calculator App ======= -->
+        <div class="project-card glass-card">
+          <div class="project-top">
+            <div class="project-icon">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" title="View Source Code on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#" class="proj-link" title="View Live Demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="project-title">Calculator App</h3>
+
+          <p class="project-desc">
+            A sleek, fully functional <strong>web calculator</strong> built with pure
+            HTML, CSS, and JavaScript — no libraries needed. Supports keyboard input,
+            keeps a calculation history log, and features smooth button animations.
+          </p>
+
+          <ul class="project-features">
+            <li><i class="fa-solid fa-check"></i> All basic arithmetic operations</li>
+            <li><i class="fa-solid fa-check"></i> Full keyboard support</li>
+            <li><i class="fa-solid fa-check"></i> Calculation history log</li>
+          </ul>
+
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Responsive</span>
+          </div>
+        </div><!-- /project 2 -->
+
+
+        <!-- ======= PROJECT 3: Personal Portfolio Website ======= -->
+        <div class="project-card glass-card">
+          <div class="project-top">
+            <div class="project-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" title="View Source Code on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#" class="proj-link" title="View Live Demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="project-title">Personal Portfolio Website</h3>
+
+          <p class="project-desc">
+            This very website you're looking at! A fully responsive dark-theme portfolio
+            with <strong>particle canvas animation</strong>, glassmorphism cards,
+            typing text effect, scroll-reveal animations, and vibrant colour accents —
+            all built with zero frameworks.
+          </p>
+
+          <ul class="project-features">
+            <li><i class="fa-solid fa-check"></i> Animated particle canvas background</li>
+            <li><i class="fa-solid fa-check"></i> Glassmorphism + neon glow effects</li>
+            <li><i class="fa-solid fa-check"></i> Fully mobile responsive</li>
+          </ul>
+
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Responsive</span>
+          </div>
+        </div><!-- /project 3 -->
+
+      </div><!-- /projects-grid -->
+    </div><!-- /container -->
+  </section><!-- /projects -->
+
+
+  <!-- =====================================================
+       CONTACT SECTION
+       Left panel: my contact details + social media links.
+       Right panel: a contact form (front-end demo only).
+  ====================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="container reveal">
+
+      <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+      <p class="section-sub">Have a question or want to collaborate? I'd love to hear from you!</p>
+
+      <div class="contact-grid">
+
+        <!-- LEFT — Contact info panel -->
+        <div class="contact-info glass-card">
+
+          <h3>Let's Connect</h3>
+          <p>
+            I'm always open to new opportunities, interesting projects,
+            collaborations, or just a friendly chat about technology and coding.
+            Feel free to reach out — I don't bite! 😄
+          </p>
+
+          <!-- Email -->
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <span class="contact-label">Email</span>
+              <span>sakshyam@example.com</span>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <span class="contact-label">Location</span>
+              <span>Nepal 🇳🇵</span>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="contact-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <span class="contact-label">Status</span>
+              <span class="status-open">Open to opportunities ✅</span>
+            </div>
+          </div>
+
+          <!-- Response time -->
+          <div class="contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <span class="contact-label">Response Time</span>
+              <span>Usually within 24 hours</span>
+            </div>
+          </div>
+
+          <!-- Social media buttons -->
+          <p class="social-heading">Find me on social media:</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" title="GitHub — @sakshyam">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="#" class="social-btn" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-btn" title="Twitter / X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="#" class="social-btn" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+
+        </div><!-- /contact-info -->
+
+
+        <!-- RIGHT — Contact form -->
+        <div class="contact-form glass-card">
+
+          <!-- NOTE FOR BEGINNERS:
+               This form is a front-end demo — it doesn't send real emails.
+               To make it real, connect it to a service like EmailJS or Formspree.
+          -->
+
+          <h3 class="form-heading">Send Me a Message</h3>
+
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="e.g. Ramesh Sharma"
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              placeholder="e.g. Collaboration Idea"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              rows="5"
+              placeholder="Hi Sakshyam, I'd like to discuss..."
+            ></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-full" id="sendBtn" onclick="handleFormSubmit()">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+
+          <!-- This paragraph shows success / error messages via JS -->
+          <p class="form-status" id="formStatus"></p>
+
+        </div><!-- /contact-form -->
+
+      </div><!-- /contact-grid -->
+    </div><!-- /container -->
+  </section><!-- /contact -->
+
+
+  <!-- =====================================================
+       FOOTER
+       Simple centred footer with copyright.
+  ====================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <!-- Logo -->
+      <span class="logo-text footer-logo">SD<span class="logo-dot">.</span></span>
+
+      <!-- Quick nav links in footer -->
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Copyright -->
+      <p>© 2026 Sakshyam Dhital. All Rights Reserved.</p>
+
+      <!-- Fun little message -->
+      <p class="footer-love">
+        Made with <i class="fa-solid fa-heart footer-heart"></i> &amp; lots of
+        <i class="fa-solid fa-mug-hot"></i> in Nepal 🇳🇵
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!-- =====================================================
+       BACK-TO-TOP BUTTON
+       Appears after scrolling 400px, smoothly scrolls back.
+  ====================================================== -->
+  <button class="back-top" id="backTop" title="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+
+  <!-- Our JavaScript file — loads last so all HTML is ready -->
+  <script src="script.js"></script>
+
+</body>
+</html>
